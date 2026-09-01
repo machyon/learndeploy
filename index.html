@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alex Rivan — Software Engineer</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap');
+
+  :root{
+    --bg: #EEF1EF;
+    --panel: #E3E8E4;
+    --ink: #1C2420;
+    --ink-soft: #4A5750;
+    --line: #C4CDC5;
+    --teal: #3F6659;
+    --ochre: #C1863C;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:920px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- header / nav ---------- */
+  header{
+    padding:28px 0 0;
+  }
+
+  .navrow{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding-bottom:22px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .navrow .mark{
+    font-family:'Newsreader', serif;
+    font-size:1.1rem;
+    font-weight:500;
+  }
+
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:26px;
+  }
+
+  nav a{
+    text-decoration:none;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+    position:relative;
+  }
+
+  nav a:hover, nav a:focus-visible{ color:var(--ink); }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:64px 0 70px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .hero h1{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    font-size:clamp(2.4rem, 6vw, 4rem);
+    line-height:1.05;
+    max-width:14ch;
+    letter-spacing:-0.01em;
+  }
+
+  .hero h1 em{
+    font-style:italic;
+    color:var(--teal);
+  }
+
+  .hero p{
+    margin-top:22px;
+    max-width:46ch;
+    font-size:1.05rem;
+    color:var(--ink-soft);
+  }
+
+  .hero .cta-row{
+    margin-top:32px;
+    display:flex;
+    gap:16px;
+    align-items:center;
+  }
+
+  .btn{
+    display:inline-block;
+    padding:11px 20px;
+    background:var(--ink);
+    color:var(--bg);
+    text-decoration:none;
+    font-size:0.92rem;
+    border-radius:2px;
+    transition:transform .15s ease, background .15s ease;
+  }
+
+  .btn:hover{ background:var(--teal); transform:translateY(-1px); }
+
+  .btn.ghost{
+    background:transparent;
+    color:var(--ink);
+    border:1px solid var(--line);
+  }
+
+  .btn.ghost:hover{ border-color:var(--ink); background:transparent; transform:translateY(-1px); }
+
+  /* ---------- section headings ---------- */
+  section{ padding:56px 0; border-bottom:1px solid var(--line); }
+
+  .section-head{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:24px;
+    margin-bottom:36px;
+  }
+
+  .section-head h2{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    font-size:1.6rem;
+  }
+
+  .section-head p{
+    color:var(--ink-soft);
+    max-width:44ch;
+    font-size:0.98rem;
+  }
+
+  @media (max-width:640px){
+    .section-head{ grid-template-columns:1fr; gap:10px; }
+  }
+
+  /* ---------- work list ---------- */
+  .work-list{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .work-item{
+    display:grid;
+    grid-template-columns:200px 1fr auto;
+    gap:24px;
+    align-items:start;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+    text-decoration:none;
+    color:inherit;
+  }
+
+  .work-item:first-child{ border-top:none; }
+
+  .work-item .year{
+    color:var(--ink-soft);
+    font-size:0.9rem;
+    padding-top:4px;
+  }
+
+  .work-item .title{
+    font-family:'Newsreader', serif;
+    font-size:1.3rem;
+    font-weight:500;
+  }
+
+  .work-item .desc{
+    color:var(--ink-soft);
+    margin-top:6px;
+    max-width:52ch;
+    font-size:0.95rem;
+  }
+
+  .work-item .tags{
+    margin-top:10px;
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+  }
+
+  .work-item .tags span{
+    font-size:0.78rem;
+    color:var(--teal);
+    background:var(--panel);
+    padding:3px 9px;
+    border-radius:2px;
+  }
+
+  .work-item .arrow{
+    font-family:'Newsreader', serif;
+    font-size:1.4rem;
+    color:var(--ink-soft);
+    padding-top:4px;
+    transition:transform .18s ease, color .18s ease;
+  }
+
+  .work-item:hover .arrow{ transform:translateX(4px); color:var(--ochre); }
+
+  @media (max-width:640px){
+    .work-item{ grid-template-columns:1fr; gap:6px; }
+    .work-item .arrow{ display:none; }
+  }
+
+  /* ---------- skills ---------- */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+
+  .skill-row{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:24px;
+    padding-top:14px;
+    border-top:1px solid var(--line);
+  }
+
+  .skill-row:first-child{ border-top:none; padding-top:0; }
+
+  .skill-row h3{
+    font-size:0.92rem;
+    font-weight:600;
+    color:var(--ink-soft);
+  }
+
+  .skill-row .items{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px 22px;
+    font-size:0.98rem;
+  }
+
+  @media (max-width:640px){
+    .skill-row{ grid-template-columns:1fr; gap:6px; }
+  }
+
+  /* ---------- contact / footer ---------- */
+  footer{
+    padding:56px 0 60px;
+  }
+
+  footer .foot-head{
+    font-family:'Newsreader', serif;
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    max-width:16ch;
+    font-weight:500;
+  }
+
+  footer .contact-links{
+    margin-top:26px;
+    display:flex;
+    gap:26px;
+    flex-wrap:wrap;
+  }
+
+  footer .contact-links a{
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:2px;
+    font-size:0.98rem;
+  }
+
+  footer .contact-links a:hover{ border-color:var(--ink); }
+
+  footer .fine{
+    margin-top:48px;
+    color:var(--ink-soft);
+    font-size:0.85rem;
+    display:flex;
+    justify-content:space-between;
+  }
+
+  @media (max-width:640px){
+    footer .fine{ flex-direction:column; gap:6px; }
+  }
+
+  :focus-visible{
+    outline:2px solid var(--teal);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; scroll-behavior:auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap navrow">
+    <div class="mark">Alex Rivan</div>
+    <nav>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero" style="border-bottom:1px solid var(--line);">
+    <h1>I build software that gets <em>out of the way.</em></h1>
+    <p>Backend-leaning developer working across small teams — APIs, data pipelines, and the occasional interface. Based in Jakarta, working with teams anywhere.</p>
+    <div class="cta-row">
+      <a class="btn" href="#work">See the work</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <p>A handful of projects, picked for what they taught me rather than how polished they turned out.</p>
+    </div>
+    <div class="work-list">
+
+      <a class="work-item" href="#">
+        <div class="year">2025</div>
+        <div>
+          <div class="title">Ledger — inventory sync for small retailers</div>
+          <div class="desc">Real-time stock sync across three sales channels for shops that used to close their books by hand every night.</div>
+          <div class="tags"><span>Node.js</span><span>Postgres</span><span>Redis</span></div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="work-item" href="#">
+        <div class="year">2024</div>
+        <div>
+          <div class="title">Fieldnote — offline-first survey tool</div>
+          <div class="desc">Built for researchers working without reliable signal; syncs cleanly once a connection returns.</div>
+          <div class="tags"><span>React Native</span><span>SQLite</span></div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+      <a class="work-item" href="#">
+        <div class="year">2023</div>
+        <div>
+          <div class="title">Aral — routing engine for last-mile delivery</div>
+          <div class="desc">Cut average delivery time by reworking how stops were batched and ordered across a driver's day.</div>
+          <div class="tags"><span>Python</span><span>OR-Tools</span></div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
+
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <h2>What I work with</h2>
+      <p>Tools I reach for most, grouped by what they're for rather than how long I've used them.</p>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <h3>Languages</h3>
+        <div class="items">TypeScript · Python · Go · SQL</div>
+      </div>
+      <div class="skill-row">
+        <h3>Backend</h3>
+        <div class="items">Node.js · PostgreSQL · Redis · Docker</div>
+      </div>
+      <div class="skill-row">
+        <h3>Frontend</h3>
+        <div class="items">React · React Native · plain HTML/CSS</div>
+      </div>
+      <div class="skill-row">
+        <h3>Practice</h3>
+        <div class="items">Code review · API design · mentoring junior engineers</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="foot-head">Have something worth building? I'd like to hear about it.</div>
+    <div class="contact-links">
+      <a href="mailto:hello@alexrivan.dev">hello@alexrivan.dev</a>
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+    </div>
+    <div class="fine">
+      <span>Alex Rivan</span>
+      <span>Jakarta, Indonesia</span>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>
